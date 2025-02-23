@@ -23,8 +23,6 @@ jobs:
         run: mvn clean test
       - name: Generate Allure Report
         run: mvn allure:generate
-      - name: Upload Allure Report to Artifacts
-        uses: actions/upload-artifact@v2
         with:
           name: allure-report
           path: target/allure-report
