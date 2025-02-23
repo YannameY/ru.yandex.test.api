@@ -2,7 +2,9 @@ name: GitHub Action
 
 on:
   push:
+    branches: [ "Petstore_api" ]
   pull_request:
+    branches: [ "Petstore_api" ]
 
 jobs:
   build:
