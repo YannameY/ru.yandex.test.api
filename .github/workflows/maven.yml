@@ -2,7 +2,7 @@ name: Java CI
 
 on:
   push:
-    branches: [Petstore_api]
+    branches: [main]
 
 jobs:
   build:
@@ -20,4 +20,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-     
+ 
