@@ -19,15 +19,13 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn clean install
+
       - name: Build and test with Maven
         run: mvn clean test
+
       - name: Generate Allure Report
         run: mvn allure:generate
-      - name: Upload Allure Report to Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-report
-          path: target/allure-report
+
       - name: Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
