@@ -20,4 +20,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-  
+      - name: Generate Allure report
+        run: mvn allure:report
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v2
+        with:
+                name: allure-report
+                path: target/site/allure-maven
