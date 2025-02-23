@@ -1,14 +1,20 @@
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
-import java.util.Collections;
-import io.restassured.http.ContentType;
 import static org.hamcrest.Matchers.*;
 
+
+@Epic("Тестирование API")
 public class ApiPetTests {
 
     private static final String BaseURI = "https://petstore.swagger.io/v2/";
 
     @Test
+    @Feature("POST Запрос")
+    @Description("Этот тест проверяет добавление нового питомца в магазин petstore")
     public void methodPostTests() {
 
         String bodyJson = """
@@ -46,12 +52,13 @@ public class ApiPetTests {
     }
 
     @Test
+    @Feature("GET Запрос")
+    @Description("Этот тест проверяет получение питомца по его id petstore.")
     public void methodGetTests() {
-
+        methodPostTests();
 
         given()
                 .header("accept", "application/json")
-                .queryParam("page", "1")
                 .log().all()
                 .when().get(BaseURI + "pet/1")
                 .then().log().all()
@@ -68,6 +75,28 @@ public class ApiPetTests {
     }
 
     @Test
+    @Feature("GET Запрос")
+    @Description("Этот тест проверяет получение питомца по его id petstore.")
+    public void methodGetAvailableTests() {
+
+
+        given()
+                .header("accept", "application/json")
+                .queryParam("status", "available")
+                .log().all()
+                .when().get(BaseURI + "pet/findByStatus")
+                .then().log().all()
+                .statusCode(200)
+
+                .body("status", not(emptyOrNullString()));
+
+    }
+
+
+
+    @Test
+    @Feature("PUT Запрос")
+    @Description("Этот тест проверяет обновление id существующего питомца")
     public void methodPutTests() {
 
 
@@ -106,8 +135,10 @@ public class ApiPetTests {
     }
 
     @Test
+    @Feature("DELETE Запрос")
+    @Description("Этот тест проверяет удаление питомца из магазина petstore.")
     public void methodDeleteTests() {
-
+        methodPostTests();
 
         given()
                 .header("accept", "application/json")
