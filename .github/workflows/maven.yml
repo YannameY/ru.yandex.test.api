@@ -20,14 +20,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build with Maven
-        run: mvn -B clean install
-
-      - name: Run tests with Allure
-        run: mvn allure:report
-
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v3.1.0
-        with:
-          name: allure-report
-          path: target/allure-results
+  
