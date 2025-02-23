@@ -27,7 +27,7 @@ jobs:
         run: mvn allure:report
 
       - name: Upload Allure Report
-        uses: actions/upload-artifact@v3.1.0
+        
         with:
           name: allure-report
           path: target/allure-results
