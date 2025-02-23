@@ -56,11 +56,10 @@ public class ApiPetTests {
     @Feature("GET Запрос")
     @Description("Этот тест проверяет получение питомца по его id petstore.")
     public void methodGetTests() {
-
+        methodPostTests();
 
         given()
                 .header("accept", "application/json")
-                .queryParam("page", "1")
                 .log().all()
                 .when().get(BaseURI + "pet/1")
                 .then().log().all()
@@ -140,7 +139,7 @@ public class ApiPetTests {
     @Feature("DELETE Запрос")
     @Description("Этот тест проверяет удаление питомца из магазина petstore.")
     public void methodDeleteTests() {
-
+        methodPostTests();
 
         given()
                 .header("accept", "application/json")
