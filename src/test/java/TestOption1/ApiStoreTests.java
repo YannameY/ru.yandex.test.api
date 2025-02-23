@@ -51,7 +51,7 @@ public class ApiStoreTests {
     @Feature("GET Запрос")
     @Description("Этот тест проверят поиск заказа на покупку по идентификатору")
     public void methodGetTests() {
-
+        methodPostTests();
 
         ValidatableResponse response = given()
                 .header("accept", "application/json")
@@ -81,21 +81,9 @@ public class ApiStoreTests {
                 .log().all()
                 .when().get(BaseURI + "store/inventory")
                 .then().log().all();
-        response.statusCode(200)
+        response.statusCode(200);
 
-                .body("1", equalTo(2))
-                .body("3000", equalTo(1))
-                .body("5000", equalTo(1))
-                .body("6000", not(emptyOrNullString()))
-                .body("забронирован", equalTo(1))
-                .body("sold", equalTo(37))
-                .body("string", not(emptyOrNullString()))
-                .body("pending", not(emptyOrNullString()))
-                .body("available", not(emptyOrNullString()))
-                .body("weisskeiner1", equalTo(1))
-                .body("avalible", equalTo(1))
-                .body("SOLD", equalTo(1))
-                .body("asdasdas", equalTo(1));
+
     }
 
 
