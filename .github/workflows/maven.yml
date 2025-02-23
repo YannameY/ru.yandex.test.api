@@ -20,21 +20,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build with Maven
-        run: mvn -B clean install
-
-      - name: Generate Allure report
-        run: mvn allure:report
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-report
-          path: target/allure-results
-
-      - name: Publish Allure Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: target/allure-report
-          publish_branch: gh-pages
+     
