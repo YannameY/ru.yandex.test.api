@@ -21,7 +21,7 @@ jobs:
       - name: Run tests
         run: mvn test
       - name: Generate Allure Report
-        run: mvn allure:generate
+        run: mvn allure:report
       - name: Copy History
         uses: actions/checkout@v2
         if: always()
