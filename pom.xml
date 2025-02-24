@@ -79,7 +79,7 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.10.0</version>
                 <configuration>
-                    <reportDirectory>${project.build.directory}/allure-results</reportDirectory>
+                    <reportDirectory>allure-results</reportDirectory>
                 </configuration>
                 <executions>
                     <execution>
