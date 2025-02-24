@@ -2,6 +2,7 @@ package TestOption1;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,7 @@ public class ApiStoreTests {
                 }""";
 
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .header("content-type", "application/json")
                 .log().all()
@@ -54,6 +56,7 @@ public class ApiStoreTests {
         methodPostTests();
 
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .log().all()
                 .when().get(BaseURI + "store/order/1")
@@ -77,6 +80,7 @@ public class ApiStoreTests {
 
 
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .log().all()
                 .when().get(BaseURI + "store/inventory")
@@ -95,6 +99,7 @@ public class ApiStoreTests {
 
 
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .log().all()
                 .when().delete(BaseURI + "store/order/1")

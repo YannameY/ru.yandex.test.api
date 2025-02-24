@@ -2,6 +2,11 @@ package TestOption1;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
+import io.qameta.allure.restassured.AllureRestAssured;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.internal.RequestSpecificationImpl;
+import io.restassured.parsing.Parser;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +16,8 @@ import static org.hamcrest.Matchers.*;
 public class ApiUserTests {
 
     private static final String BaseURI = "https://petstore.swagger.io/v2/";
+
+
 
     @Test
     @Feature("POST Запрос")
@@ -31,7 +38,10 @@ public class ApiUserTests {
                   }
                 ]""";
 
+
+
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .header("content-type", "application/json")
                 .log().all()
@@ -55,6 +65,7 @@ public class ApiUserTests {
 
 
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .log().all()
                 .when().get(BaseURI + "user/string")
@@ -94,6 +105,7 @@ public class ApiUserTests {
 
 
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .header("content-type", "application/json")
                 .log().all()
@@ -117,6 +129,7 @@ public class ApiUserTests {
 
 
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .header("content-type", "application/json")
                 .log().all()
@@ -138,6 +151,7 @@ public class ApiUserTests {
 
 
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .queryParam("username", "admin")
                 .queryParam("password", "admin")
@@ -161,6 +175,7 @@ public class ApiUserTests {
 
 
         ValidatableResponse response = given()
+                .filter(new AllureRestAssured())
                 .header("accept", "application/json")
                 .log().all()
                 .when().get(BaseURI + "user/logout")
