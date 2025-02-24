@@ -56,7 +56,7 @@ public class ApiUserTests {
         ValidatableResponse response = given()
                 .header("accept", "application/json")
                 .log().all()
-                .when().get(BaseURI + "user/1")
+                .when().get(BaseURI + "user/string")
                 .then().log().all();
         response.statusCode(200)
 
@@ -119,7 +119,7 @@ public class ApiUserTests {
                 .header("accept", "application/json")
                 .header("content-type", "application/json")
                 .log().all()
-                .when().delete(BaseURI + "user/1")
+                .when().delete(BaseURI + "user/string")
                 .then().log().all();
         response.statusCode(200)
 
